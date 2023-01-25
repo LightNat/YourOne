@@ -82,7 +82,9 @@ function MusicPlayer()
                     </Pressable>
                 </View>
             </View>
-            
+            <View>
+                <Text></Text>
+            </View>
         </View>
     );
 }

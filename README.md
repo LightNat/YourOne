@@ -23,7 +23,7 @@
 <br>Bible Books Screen 4	  -	
 <br>Hamburger Menu		      -	Done
 <br>Profile Screen		      -	Done
-<br>Journal Screen		      -	
+<br>Journal Screen		      -	Done
 <br>Folder Screen		        -	
 <br>Editing Journal Screen	-	
 <br>Deleting Folder 2	      -	

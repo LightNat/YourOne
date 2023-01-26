@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -7,16 +6,24 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './screens/Login';
 import SignUpScreen from './screens/SignUp';
 import MyPager from './screens/Pager';
+
+//Home Screen (Default)
 import MyTabs from './screens/MyHomePage';
 
 //Menu Screen
 import MyProfile from './screens/MyMenu/MyProfile';
+import Journal from './screens/MyMenu/Journal';
 
-//Preachings screen
+//Preachings Screen
 import Videoscreen2 from './screens/MyPreachings/Videoscreen2';
 import Videoscreen3 from './screens/MyPreachings/Videoscreen3';
+
+//Discover Screen
 import SongList from './screens/MyDiscover/SongList';
 import MusicPlayer from './screens/MyDiscover/MusicPlayer';
+import FolderContent from './screens/MyMenu/JournalFolder/FolderContent';
+
+
 
 const Stack = createNativeStackNavigator();
 
@@ -108,6 +115,26 @@ function App() {
         <Stack.Screen 
         name="MusicPlayer" 
         component={MusicPlayer} 
+        options={{
+          headerLeft: () => (
+            false
+          ),
+          headerShown: false,
+        }}
+        />
+        <Stack.Screen 
+        name="Journal" 
+        component={Journal} 
+        options={{
+          headerLeft: () => (
+            false
+          ),
+          headerShown: false,
+        }}
+        />
+        <Stack.Screen 
+        name="FolderContent" 
+        component={FolderContent} 
         options={{
           headerLeft: () => (
             false

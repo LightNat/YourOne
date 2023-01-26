@@ -55,7 +55,7 @@ function HamburgerMenu({navigation}) {
                     <Text style={styles.text}>Videos</Text>
                 </Pressable>
 
-                <Pressable style={styles.button} onPress={() => Alert.alert("Highlights")}>
+                <Pressable style={styles.button} onPress={() => navigation.navigate('Journal')}>
                     <Image source={require('../../images/Tabs/Menu/highlights.png')}
                     style={styles.image}/>
                     <Text style={styles.text}>Highlights</Text>

@@ -1,8 +1,17 @@
-import { Text, View, StyleSheet, Image, Pressable, Alert, ScrollView} from 'react-native';
+import React, {useState} from 'react';
+import { Text, View, StyleSheet, Image, Pressable, Alert, ScrollView, KeyboardAvoidingView, TextInput} from 'react-native';
 import Folder from './JournalFolder/Folder';
 
 function Journal({navigation})
 {
+    const [task, setTask] = useState();
+    const [taskItems, setTaskItems] = useState([]);
+    
+    const handleAddTask = () => {
+        setTaskItems([...taskItems, task])
+        setTask[null];
+    }
+
     return(
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <View style={styles.page}>
@@ -24,6 +33,13 @@ function Journal({navigation})
                     <View style={styles.folders}>
                         <ScrollView>
                             <Pressable onPress={() => navigation.navigate('FolderContent')}>
+                                {
+                                    taskItems.map((item) => {
+                                        return <Folder  text={item}/>
+                                    })
+                                }
+                            </Pressable>
+                            {/* <Pressable onPress={() => navigation.navigate('FolderContent')}>
                                 <Folder text={'Bible Class'} />
                             </Pressable>
                             <Pressable onPress={() => Alert.alert('Prayer')}>
@@ -34,37 +50,15 @@ function Journal({navigation})
                             </Pressable>
                             <Pressable onPress={() => Alert.alert('Task 4')}>
                                 <Folder text={'Task 4'} />
-                            </Pressable>
-                            <Pressable onPress={() => Alert.alert('Task 5')}>
-                                <Folder text={'Task 5'} />
-                            </Pressable>
-                            <Pressable onPress={() => Alert.alert('Task 6')}>
-                                <Folder text={'Task 6'} />
-                            </Pressable>
-                            <Pressable onPress={() => Alert.alert('Task 7')}>
-                                <Folder text={'Task 7'} />
-                            </Pressable>
-                            <Pressable onPress={() => Alert.alert('Task 8')}>
-                                <Folder text={'Task 8'} />
-                            </Pressable>
-                            <Pressable onPress={() => Alert.alert('Task 9')}>
-                                <Folder text={'Task 9'} />
-                            </Pressable>
-                            <Pressable onPress={() => Alert.alert('Task 10')}>
-                                <Folder text={'Task 10'} />
-                            </Pressable>
+                            </Pressable> */}
                         </ScrollView>
-                        <View style={styles.buttonsPart}>
-                            <Text>sample</Text>
-                            {/* <Image source={require('../../images/Tabs/Menu/MyJournal/addButton.png')}/> */}
-                        </View>
                     </View>
                     
                 </View>
                 <View style={styles.buttonsPart}>
                     <View style={styles.buttons}>
                         <View>
-                            <Pressable onPress={() => Alert.alert('Add Folder')}>
+                            <Pressable onPress={() => handleAddTask()}>
                                 <Image source={require('../../images/Tabs/Menu/MyJournal/addButton.png')}/>
                             </Pressable>
                         </View>
@@ -75,6 +69,11 @@ function Journal({navigation})
                             </Pressable>
                         </View>
                     </View>
+                    <KeyboardAvoidingView 
+                        behavior={Platform.OS === "ios" ? "padding" : "height"}
+                    >
+                        <TextInput placeholder='Add Folder' value={task} onChangeText={text => setTask(text)}/>
+                    </KeyboardAvoidingView>
                 </View>
                 
                 

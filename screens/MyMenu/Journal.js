@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Text, View, StyleSheet, Image, Pressable, Alert, ScrollView, KeyboardAvoidingView, TextInput} from 'react-native';
 import Folder from './JournalFolder/Folder';
+import { Overlay } from 'react-native-elements';
 
 function Journal({navigation})
 {
@@ -10,7 +11,15 @@ function Journal({navigation})
     const handleAddTask = () => {
         setTaskItems([...taskItems, task])
         setTask[null];
+        setVisible(!visible);
     }
+
+    //Overlay
+    const [visible, setVisible] = useState(false);
+
+    const toggleOverlay = () => {
+        setVisible(!visible);
+    };
 
     return(
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -58,22 +67,49 @@ function Journal({navigation})
                 <View style={styles.buttonsPart}>
                     <View style={styles.buttons}>
                         <View>
-                            <Pressable onPress={() => handleAddTask()}>
+                        {/* onPress={() => handleAddTask()} */}
+                            <Pressable onPress={toggleOverlay}>
                                 <Image source={require('../../images/Tabs/Menu/MyJournal/addButton.png')}/>
                             </Pressable>
                         </View>
                         <View style={styles.deleteButton}>
-                            <Pressable onPress={() => Alert.alert('Delete Folder')}>
+                            <Pressable>
                                 <Image source={require('../../images/Tabs/Menu/MyJournal/deleteButton.png')}
                                 />
                             </Pressable>
                         </View>
                     </View>
-                    <KeyboardAvoidingView 
-                        behavior={Platform.OS === "ios" ? "padding" : "height"}
-                    >
-                        <TextInput placeholder='Add Folder' value={task} onChangeText={text => setTask(text)}/>
-                    </KeyboardAvoidingView>
+                    {/* for adding a folder */}
+                    <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
+                        <View style={styles.overlay}>
+                            <View style={styles.createFolderImageView}>
+                                <Image source={require('../../images/Tabs/Menu/MyJournal/createFolder.png')}
+                                />
+                            </View>
+                            <View>
+                                <View style={styles.addFolderInput}>
+                                    <KeyboardAvoidingView 
+                                    behavior={Platform.OS === "ios" ? "padding" : "height"}
+                                    >
+                                        <TextInput placeholder='Folder Name' value={setTask} onChangeText={text => setTask(text)} style={{fontWeight: '500', height: 25, width: 121, fontSize: 21, marginLeft: 10}}/>
+                                    </KeyboardAvoidingView>
+                                </View>
+                                <View style={{alignItems: 'center'}}>
+                                <Image source={require('../../images/Tabs/Menu/MyJournal/textInputLine.png')}
+                                />
+                                </View>
+                            </View>
+                            <Pressable onPress={() => handleAddTask()}>
+                                <View style={styles.createFolderView}>
+                                    <Text style={styles.createFolderTextCreate}>Create Folder</Text>
+                                </View>
+                            </Pressable>
+                            <Pressable onPress={() => setVisible(!visible)}>
+                                <Text>Cancel</Text>
+                            </Pressable>
+                        </View>
+                    </Overlay>
+                    
                 </View>
                 
                 
@@ -109,16 +145,13 @@ const styles = StyleSheet.create({
     },
     headerPart: {
         flex: 49,
-        backgroundColor: 'pink'
     },
     folderPart: {
         flex: 28,
-        backgroundColor: 'orange'
     },
     buttonsPart: {
         flex: 23,
         alignItems: 'flex-end',
-        backgroundColor: 'pink',
     },
     buttons: {
         marginTop: 20,
@@ -131,6 +164,39 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 100,
         marginRight: 5 
+    },
+    overlay: {
+        alignItems: 'center',
+    },
+    createFolderImageView: {
+        backgroundColor: 'rgb(217, 217, 217)',
+        width: 122,
+        height: 122,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 100,
+        marginVertical: 20
+    },
+    addFolderInput: {
+        marginRight: 140
+
+    },
+    createFolderView: {
+        backgroundColor: 'black',
+        borderRadius: 13,
+        width: 274,
+        height: 57,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginVertical: 20
+    },
+    createFolderTextCreate: {
+        fontWeight: '500',
+        fontSize: 20,
+        color: 'white'
+    },
+    createFolderTextCancel: {
+
     }
 })
 

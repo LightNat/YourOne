@@ -91,7 +91,7 @@ function Journal({navigation})
                                     <KeyboardAvoidingView 
                                     behavior={Platform.OS === "ios" ? "padding" : "height"}
                                     >
-                                        <TextInput placeholder='Folder Name' value={setTask} onChangeText={text => setTask(text)} style={{fontWeight: '500', height: 25, width: 121, fontSize: 21, marginLeft: 10}}/>
+                                        <TextInput placeholder='Folder Name' placeholderTextColor="#5E5E5E" value={setTask} onChangeText={text => setTask(text)} style={{fontWeight: '500', height: 25, width: 121, fontSize: 21, marginLeft: 10, lineHeight: 25}}/>
                                     </KeyboardAvoidingView>
                                 </View>
                                 <View style={{alignItems: 'center'}}>
@@ -105,7 +105,7 @@ function Journal({navigation})
                                 </View>
                             </Pressable>
                             <Pressable onPress={() => setVisible(!visible)}>
-                                <Text>Cancel</Text>
+                                <Text style={styles.createFolderTextCancel}>Cancel</Text>
                             </Pressable>
                         </View>
                     </Overlay>
@@ -196,7 +196,11 @@ const styles = StyleSheet.create({
         color: 'white'
     },
     createFolderTextCancel: {
-
+        fontWeight: '500',
+        fontSize: 21,
+        color: 'rgb(107, 65, 152)',
+        textDecorationLine: 'underline',
+        marginBottom: 20
     }
 })
 

@@ -1,5 +1,11 @@
 # YourOne
 
+**Device: (Pixel4 API 31, Android 12.0 Google Play | 86_64)**
+<br>
+**Type: (Android Virtual Device)**
+<br>
+<br>
+
 **Screens (Done):**
 <br>
 <br>Login Screen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Done
@@ -28,4 +34,4 @@
 <br>Editing Journal Screen&nbsp;&nbsp;&nbsp;-	
 <br>Deleting Folder 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-	
 <br>Deleting Folder 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-	
-<br>Create New Folder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-	
+<br>Create New Folder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Done (Partially)

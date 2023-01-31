@@ -8,18 +8,38 @@ function Journal({navigation})
     const [task, setTask] = useState();
     const [taskItems, setTaskItems] = useState([]);
     
+    //adding a task/Folder
     const handleAddTask = () => {
         setTaskItems([...taskItems, task])
         setTask[null];
         setVisible(!visible);
     }
 
+    //deleting a task/folder
+    const completeTask = (index) => {
+        let itemsCopy = [...taskItems];
+        itemsCopy.splice(index, 1);
+        setTaskItems(itemsCopy);
+        setVisible2(!visible2);
+    }
+
     //Overlay
     const [visible, setVisible] = useState(false);
+    const [visible2, setVisible2] = useState(false);
 
     const toggleOverlay = () => {
         setVisible(!visible);
     };
+
+    const toggleOverlay2 = () => {
+        setVisible2(!visible2);
+    };
+
+    //checkbox
+    const [checked, setChecked] = useState(false);
+
+
+
 
     return(
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -41,13 +61,17 @@ function Journal({navigation})
                 <View style={styles.folderPart}>
                     <View style={styles.folders}>
                         <ScrollView>
-                            <Pressable onPress={() => navigation.navigate('FolderContent')}>
                                 {
-                                    taskItems.map((item) => {
-                                        return <Folder  text={item}/>
+                                    // completeTask(index)
+                                    taskItems.map((item, index) => {
+                                        return(
+                                            <Pressable key={index} onPress={() => navigation.navigate('FolderContent')}>
+                                                <Folder  text={item}/>
+                                            </Pressable>
+                                        ) 
                                     })
                                 }
-                            </Pressable>
+                            
                             {/* <Pressable onPress={() => navigation.navigate('FolderContent')}>
                                 <Folder text={'Bible Class'} />
                             </Pressable>
@@ -73,9 +97,8 @@ function Journal({navigation})
                             </Pressable>
                         </View>
                         <View style={styles.deleteButton}>
-                            <Pressable>
-                                <Image source={require('../../images/Tabs/Menu/MyJournal/deleteButton.png')}
-                                />
+                            <Pressable onPress={toggleOverlay2}>
+                                <Image source={require('../../images/Tabs/Menu/MyJournal/deleteButton.png')}/>
                             </Pressable>
                         </View>
                     </View>
@@ -109,6 +132,55 @@ function Journal({navigation})
                             </Pressable>
                         </View>
                     </Overlay>
+                        
+
+                    
+
+                    {/* for deleting a */}
+                    
+                    
+                    <Overlay isVisible={visible2} onBackdropPress={toggleOverlay2}>
+                    <ScrollView>
+                    {
+                    // completeTask(index)
+                    taskItems.map((item, index) => {
+                        return(
+                            
+                        <View style={styles.overlay}>
+                            <View style={styles.createFolderImageView}>
+                                <Image source={require('../../images/Tabs/Menu/MyJournal/deleteFolder.png')}
+                                />
+                            </View>
+                            <View>
+                                <View style={{alignItems: 'center'}}>
+                                    <Text style={{fontSize: 21, fontWeight: '500'}}>Are you sure you want to delete this folder <Text>{item}</Text>?</Text>
+                                </View>
+                            </View>
+                            
+                            <Pressable onPress={() => completeTask(index)}>
+                                <View style={styles.deleteFolderView}>
+                                    <Text style={styles.createFolderTextCreate}>Delete</Text>
+                                </View>
+                            </Pressable>
+                            
+                            <Pressable onPress={() => setVisible2(!visible2)}>
+                                <Text style={styles.createFolderTextCancel}>Cancel</Text>
+                            </Pressable>
+                            <View>
+                                <Image source={require('../../images/Tabs/Menu/MyJournal/textInputLine.png')}
+                                
+                                />
+                            </View>
+                        </View>
+                        
+                        ) 
+                    })
+                        }
+                        </ScrollView>
+                    </Overlay>
+                    
+                    
+                            
                     
                 </View>
                 
@@ -201,6 +273,15 @@ const styles = StyleSheet.create({
         color: 'rgb(107, 65, 152)',
         textDecorationLine: 'underline',
         marginBottom: 20
+    },
+    deleteFolderView: {
+        backgroundColor: 'rgb(143, 24, 24)',
+        borderRadius: 13,
+        width: 274,
+        height: 57,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginVertical: 20
     }
 })
 

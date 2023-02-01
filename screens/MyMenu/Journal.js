@@ -146,7 +146,7 @@ function Journal({navigation})
                     taskItems.map((item, index) => {
                         return(
                             
-                        <View style={styles.overlay}>
+                        <View style={styles.overlay} >
                             <View style={styles.createFolderImageView}>
                                 <Image source={require('../../images/Tabs/Menu/MyJournal/deleteFolder.png')}
                                 />

@@ -153,7 +153,7 @@ function Journal({navigation})
                             </View>
                             <View>
                                 <View style={{alignItems: 'center'}}>
-                                    <Text style={{fontSize: 21, fontWeight: '500'}}>Are you sure you want to delete this folder <Text>{item}</Text>?</Text>
+                                    <Text style={{fontSize: 21, fontWeight: '500'}}>Are you sure you want to delete this folder named '<Text>{item}</Text>'?</Text>
                                 </View>
                             </View>
                             

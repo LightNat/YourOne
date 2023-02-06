@@ -1,13 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, Button, Image, ImageBackground ,Pressable, Alert, FlatList } from 'react-native';
 
-const Videoscreen3 = (props) => {
+const Videoscreen3 = ({navigation}) => {
     return(
     <View style={style.container}>
         <View style={style.stevenimage}>
             <ImageBackground source={require('../../images/Tabs/Preachings/stevscreen3speech.png')}
                 style ={style.picture}>
-                <Pressable onPress={()=> console.warn("Play")}>
+                <Pressable onPress={()=> navigation.navigate('Videoscreen4')}>
                     <Text style={style.textplay}>Play</Text>
                 </Pressable>
                 <View style={style.backgroundwhite}>

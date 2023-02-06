@@ -8,7 +8,9 @@ const FolderContent = ({navigation}) =>
         <View style={styles.page}>
           <View style={styles.headerPart}>
             <View style={{marginRight: 100}}>
-              <Image source={require('../../../images/Tabs/Menu/MyJournal/backArrow.png')}/>
+              <Pressable onPress={() => navigation.navigate('Journal')}>
+                <Image source={require('../../../images/Tabs/Menu/MyJournal/backArrow.png')}/>
+              </Pressable>
             </View>
             <View style={{marginRight: 120}}>
               <View>

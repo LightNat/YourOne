@@ -1,14 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, Pressable, Alert} from 'react-native';
 
-const FolderContentView = () => 
+const FolderContentView = ({navigation}) => 
 {
     return(
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <View style={styles.page}>
                 <View style={styles.headerPart}>
                     <View style={{marginRight: 100}}>
-                        <Image source={require('../../../images/Tabs/Menu/MyJournal/backArrow.png')}/>
+                        <Pressable onPress={() => navigation.navigate('FolderContent')}>
+                            <Image source={require('../../../images/Tabs/Menu/MyJournal/backArrow.png')}/>
+                        </Pressable>
                     </View>
                 <View style={{marginRight: 120}}>
                     <View>
